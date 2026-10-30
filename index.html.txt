@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auto Select | Каталог машин</title>
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #101114;
+  color: #f5f5f5;
+}
+
+header {
+  padding: 24px 7%;
+  background: #191a1f;
+  border-bottom: 1px solid #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo { font-size: 24px; font-weight: bold; }
+.logo span { color: #ff493d; }
+
+header a {
+  color: #ddd;
+  text-decoration: none;
+}
+
+.hero {
+  padding: 55px 7% 30px;
+}
+
+.hero h1 {
+  font-size: clamp(30px, 5vw, 52px);
+  margin-bottom: 12px;
+}
+
+.hero p { color: #aaa; line-height: 1.6; }
+
+.cars {
+  padding: 20px 7% 60px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: #1b1c21;
+  border: 1px solid #303137;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.car-image {
+  height: 220px;
+  display: grid;
+  place-items: center;
+  font-size: 95px;
+  background: linear-gradient(135deg, #292b32, #17181d);
+}
+
+.card-content { padding: 22px; }
+
+.card h2 { margin: 0 0 8px; }
+
+.price {
+  color: #ff665c;
+  font-size: 23px;
+  font-weight: bold;
+  margin: 14px 0;
+}
+
+.preview {
+  color: #bbb;
+  line-height: 1.8;
+  font-size: 14px;
+}
+
+button {
+  width: 100%;
+  padding: 13px;
+  border: 0;
+  border-radius: 8px;
+  background: #ff493d;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+button:hover { background: #df362d; }
+
+.details {
+  display: none;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid #3a3b42;
+  color: #ddd;
+  line-height: 1.9;
+}
+
+footer {
+  text-align: center;
+  color: #888;
+  padding: 25px;
+}
+
+@media (max-width: 650px) {
+  .cars { grid-template-columns: 1fr; padding: 20px 5% 40px; }
+  header { padding: 20px 5%; }
+  .car-image { height: 190px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">AUTO <span>SELECT</span></div>
+  <a href="#cars">Каталог автомобилей</a>
+</header>
+
+<section class="hero">
+  <h1>Выбери свою машину.</h1>
+  <p>Четыре концептуальных автомобиля. Характеристики,
+     скорость и стоимость в одном каталоге.</p>
+</section>
+
+<main class="cars" id="cars">
+
+  <article class="card">
+    <div class="car-image">🏎️</div>
+    <div class="card-content">
+      <h2>Red Falcon X</h2>
+      <p>Спортивное купе</p>
+      <div class="price">$180 000</div>
+      <div class="preview">Максимальная скорость: 320 км/ч</div>
+      <button onclick="toggleDetails('car1', this)">Подробнее</button>
+      <div class="details" id="car1">
+        Мощность: 620 л.с.<br>
+        Разгон 0–100 км/ч: 3,1 с<br>
+        Двигатель: V8<br>
+        Привод: задний<br>
+        Коробка передач: автоматическая<br>
+        Цена: $180 000
+      </div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="car-image">🏁</div>
+    <div class="card-content">
+      <h2>Silver Arrow GT</h2>
+      <p>Гран-турер</p>
+      <div class="price">$145 000</div>
+      <div class="preview">Максимальная скорость: 295 км/ч</div>
+      <button onclick="toggleDetails('car2', this)">Подробнее</button>
+      <div class="details" id="car2">
+        Мощность: 510 л.с.<br>
+        Разгон 0–100 км/ч: 3,8 с<br>
+        Двигатель: V8<br>
+        Привод: полный<br>
+        Коробка передач: автоматическая<br>
+        Цена: $145 000
+      </div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="car-image">🚘</div>
+    <div class="card-content">
+      <h2>Night Phantom</h2>
+      <p>Спортивный седан</p>
+      <div class="price">$95 000</div>
+      <div class="preview">Максимальная скорость: 270 км/ч</div>
+      <button onclick="toggleDetails('car3', this)">Подробнее</button>
+      <div class="details" id="car3">
+        Мощность: 420 л.с.<br>
+        Разгон 0–100 км/ч: 4,2 с<br>
+        Двигатель: V6 с турбонаддувом<br>
+        Привод: полный<br>
+        Коробка передач: автоматическая<br>
+        Цена: $95 000
+      </div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="car-image">🚗</div>
+    <div class="card-content">
+      <h2>Blue Nova R</h2>
+      <p>Электрический суперкар</p>
+      <div class="price">$220 000</div>
+      <div class="preview">Максимальная скорость: 340 км/ч</div>
+      <button onclick="toggleDetails('car4', this)">Подробнее</button>
+      <div class="details" id="car4">
+        Мощность: 900 л.с.<br>
+        Разгон 0–100 км/ч: 2,5 с<br>
+        Двигатель: электрический<br>
+        Привод: полный<br>
+        Запас хода: 480 км<br>
+        Цена: $220 000
+      </div>
+    </div>
+  </article>
+
+</main>
+
+<footer>
+  AUTO SELECT · Учебный проект · Характеристики вымышлены
+</footer>
+
+<script>
+function toggleDetails(id, button) {
+  const details = document.getElementById(id);
+  const isOpen = details.style.display === "block";
+
+  details.style.display = isOpen ? "none" : "block";
+  button.textContent = isOpen ? "Подробнее" : "Скрыть характеристики";
+}
+</script>
+
+</body>
+</html>
